@@ -54,7 +54,7 @@ public class GuiCliente implements Serializable {
     }
     
     public String gravarCliente() {
-        daoCliente.gravar(cliente, !alterando);
+        daoCliente.gravar(cliente, alterando);
         listaClientes = daoCliente.getList();
         return null;
     }
