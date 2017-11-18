@@ -35,25 +35,25 @@ public class GuiCliente implements Serializable {
         return "ListaCliente";
     }
     
-    public String iniciarNovoCliente() {
+    public String iniciarNovo() {
         cliente = new Cliente();
         alterando = false;
         return "CadastrarCliente";
     }
     
-    public String iniciarAlterarCliente(Cliente cliente) {
+    public String iniciarAlterar(Cliente cliente) {
         this.cliente = cliente;
         alterando = true;
         return "CadastrarCliente";
     }
     
-    public String excluirCliente(Cliente cliente) {
+    public String excluir(Cliente cliente) {
         daoCliente.excluir(cliente);
         listaClientes = daoCliente.getList();
         return null;
     }
     
-    public String gravarCliente() {
+    public String gravar() {
         daoCliente.gravar(cliente, alterando);
         listaClientes = daoCliente.getList();
         return null;
