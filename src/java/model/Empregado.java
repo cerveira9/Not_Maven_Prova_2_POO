@@ -12,6 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 /**
  *
@@ -24,8 +25,12 @@ public class Empregado implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private String login;
+    private String senha;
     private int matricula;
     private String nomeEmpregado;
+    @OneToMany
+    private Cargos cargo;
     @OneToMany
     private List<Funcoes> funcao;
    
@@ -65,6 +70,10 @@ public class Empregado implements Serializable {
     public Empregado() {
     }
     
+    public void createNewCargo(Cargos cargo){
+        Funcoes c = new Funcoes(); 
+    }
+    
     public int getMatricula() {
         return matricula;
     }
@@ -88,6 +97,9 @@ public class Empregado implements Serializable {
     public void setFuncao(List<Funcoes> funcao) {
         this.funcao = funcao;
     }
-    
+
+    public Cargos getCargo() {
+        return cargo;
+    }
     
 }

@@ -10,5 +10,5 @@ package model;
  * @author fernandocerveira
  */
 public enum Cargos {
-    
+    Coordenador, Atendente, Empregado
 }
