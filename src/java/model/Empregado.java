@@ -27,7 +27,6 @@ public class Empregado implements Serializable {
     private Long id;
     private String login;
     private String senha;
-    private int matricula;
     private String nomeEmpregado;
     @Enumerated(EnumType.STRING)
     private Cargos cargo;
@@ -73,14 +72,6 @@ public class Empregado implements Serializable {
     public void createNewCargo(Cargos cargo){
         Funcoes c = new Funcoes(); 
     }
-    
-    public int getMatricula() {
-        return matricula;
-    }
-
-    public void setMatricula(int matricula) {
-        this.matricula = matricula;
-    }
 
     public String getNomeEmpregado() {
         return nomeEmpregado;
@@ -102,6 +93,10 @@ public class Empregado implements Serializable {
         return cargo;
     }
 
+    public void setCargo(Cargos cargo) {
+        this.cargo = cargo;
+    }
+    
     public String getLogin() {
         return login;
     }

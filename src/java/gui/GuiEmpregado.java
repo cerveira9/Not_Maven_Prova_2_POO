@@ -26,6 +26,7 @@ public class GuiEmpregado implements Serializable {
     private Empregado empregado;
     private List<Empregado> listaEmpregados;
     private Boolean alterando;
+    private String nomeFuncao;
     
     public GuiEmpregado() {
     }
@@ -81,6 +82,14 @@ public class GuiEmpregado implements Serializable {
 
     public void setAlterando(Boolean alterando) {
         this.alterando = alterando;
+    }
+
+    public String getNomeFuncao() {
+        return nomeFuncao;
+    }
+
+    public void setNomeFuncao(String nomeFuncao) {
+        this.nomeFuncao = nomeFuncao;
     }
     
     
