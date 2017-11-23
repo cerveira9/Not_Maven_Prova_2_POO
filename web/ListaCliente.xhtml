@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Clientes</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <p:commandButton value ="Incluir" action="#{guiCliente.iniciarNovo()}" ajax="false" />
+            <p:commandButton value="Voltar" action="index" ajax="false" />
+            <br />
+            <br />
+            <p:dataTable value="#{guiCliente.listaClientes}" var="c" id="tblcliente" >
+                <p:column headerText="Nome">
+                    <p:outputLabel value="#{c.nomeDoCliente}" />
+                </p:column>
+                <p:column headerText="CPF">
+                    <p:outputLabel value="#{c.cpf}" />
+                </p:column>
+                <p:column headerText="CNPJ">
+                    <p:outputLabel value="#{c.cnpj}" />
+                </p:column>
+                <p:column >
+                    <p:commandButton value="Excluir" action="#{guiCliente.excluir(c)}" ajax="true" update="tblcliente" />
+                    <p:commandButton value="Alterar" action="#{guiCliente.iniciarAlterar(c)}" ajax="false" />
+                </p:column>
+            </p:dataTable>
+        </h:form>
+    </h:body>
+</html>
+

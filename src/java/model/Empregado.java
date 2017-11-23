@@ -8,6 +8,8 @@ package model;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -27,7 +29,7 @@ public class Empregado implements Serializable {
     private String senha;
     private int matricula;
     private String nomeEmpregado;
-    @OneToMany
+    @Enumerated(EnumType.STRING)
     private Cargos cargo;
     @OneToMany
     private List<Funcoes> funcao;
