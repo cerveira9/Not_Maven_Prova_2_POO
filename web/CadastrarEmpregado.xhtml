@@ -2,20 +2,26 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Cadastro de Empregado</title>
     </h:head>
     <h:body>
         <h:form>
-            <p:panelGrid columns="2" >
-                <p:outputLabel value="Matrícula" />
-                <p:inputText value="#{guiEmpregado.empregado.id}" disabled="true"/>
-                <p:outputLabel value="Nome do Empregado" />
-                <p:inputText value="#{guiEmpregado.empregado.nomeEmpregado}" />
-                <p:outputLabel value="Cargo" />
-                <p:inputText value="#{guiEmpregado.empregado.cargo}" />
-            </p:panelGrid>
+            <p:panel header="Cadastre o Empregado">
+                <p:panelGrid columns="2" >
+                    <p:outputLabel value="Matrícula: " />
+                    <p:inputText value="#{guiEmpregado.empregado.id}" disabled="true"/>
+                    <p:outputLabel value="Nome do Empregado: " />
+                    <p:inputText value="#{guiEmpregado.empregado.nomeEmpregado}" />
+                    <p:outputLabel for="cargo" value="Cargo: " />
+                    <p:selectOneMenu id="cargo" value="#{guiEmpregado.empregado.cargo}" style="width:150px">                
+                        <f:selectItem itemLabel="Selecione o Cargo" itemValue="" noSelectionOption="true" />
+                        <f:selectItems value="#{guiEmpregado.empregado.cargo}" />
+                    </p:selectOneMenu>
+                </p:panelGrid>
+            </p:panel>
             <br />
             <p:commandButton value="Gravar" action="#{guiEmpregado.gravar()}" ajax="false" />
             <p:commandButton value="Voltar" action="#{guiEmpregado.iniciarLista()}" ajax="false" />
