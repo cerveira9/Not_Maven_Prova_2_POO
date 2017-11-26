@@ -18,7 +18,7 @@
                     <p:outputLabel for="cargo" value="Cargo: " />
                     <p:selectOneMenu id="cargo" value="#{guiEmpregado.empregado.cargo}" style="width:150px">                
                         <f:selectItem itemLabel="Selecione o Cargo" itemValue="" noSelectionOption="true" />
-                        <f:selectItems value="#{guiEmpregado.empregado.cargo}" />
+                        <f:selectItems value="#{guiEmpregado.listaCargos}" />
                     </p:selectOneMenu>
                 </p:panelGrid>
             </p:panel>

@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Cadastro da Função</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <p:panel header="Cadastre a Função">
+                <p:panelGrid columns="2" >
+                    <p:outputLabel value="Id: " />
+                    <p:inputText value="#{guiFuncoes.funcoes.id}" disabled="true"/>
+                    <p:outputLabel value="Função: " />
+                    <p:inputText value="#{guiFuncoes.funcoes.nomeDaFuncao}" />
+                    <p:outputLabel value="Descrição: " />
+                    <p:inputText value="#{guiFuncoes.funcoes.descricaoFuncao}" />
+                    <p:outputLabel value="Homem/m2: " />
+                    <p:inputText value="#{guiFuncoes.funcoes.qtdHomem}" />
+                    <p:outputLabel value="Salário Base: " />
+                    <p:inputText value="#{guiFuncoes.funcoes.salarioBase}" />
+                </p:panelGrid>
+            </p:panel>
+            <br />
+            <p:commandButton value="Gravar" action="#{guiFuncoes.gravar()}" ajax="false" />
+            <p:commandButton value="Voltar" action="#{guiFuncoes.iniciarLista()}" ajax="false" />
+        </h:form>
+    </h:body>
+</html>
+

@@ -9,8 +9,11 @@ import dao.EmpregadoDao;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.EnumSet;
 import java.util.List;
 import javax.ejb.EJB;
+import model.Cargos;
 import model.Empregado;
 
 /**
@@ -26,6 +29,7 @@ public class GuiEmpregado implements Serializable {
     private Empregado empregado;
     private List<Empregado> listaEmpregados;
     private Boolean alterando;
+    private List<Cargos> listaCargos = new ArrayList<>(EnumSet.allOf(Cargos.class));
     private String nomeFuncao;
     
     public GuiEmpregado() {
@@ -57,7 +61,7 @@ public class GuiEmpregado implements Serializable {
     public String gravar() {
         daoEmpregado.gravar(empregado, alterando);
         listaEmpregados = daoEmpregado.getList();
-        return null;
+        return "ListaEmpregado";
     }
 
     public Empregado getEmpregado() {
@@ -90,6 +94,14 @@ public class GuiEmpregado implements Serializable {
 
     public void setNomeFuncao(String nomeFuncao) {
         this.nomeFuncao = nomeFuncao;
+    }
+
+    public List<Cargos> getListaCargos() {
+        return listaCargos;
+    }
+
+    public void setListaCargos(List<Cargos> listaCargos) {
+        this.listaCargos = listaCargos;
     }
     
     

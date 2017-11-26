@@ -9,25 +9,44 @@
     </h:head>
     <h:body>
         <h:form>
-            <p:commandButton value ="Incluir" action="#{guiEmpregado.iniciarNovo()}" ajax="false" />
-            <p:commandButton value="Voltar" action="index" ajax="false" />
-            <br />
-            <br />
-            <p:dataTable value="#{guiEmpregado.listaEmpregados}" var="e" id="tblempregado" >
-                <p:column headerText="Matrícula">
-                    <p:outputLabel value="#{e.id}" />
-                </p:column>
-                <p:column headerText="Nome">
-                    <p:outputLabel value="#{e.nomeEmpregado}" />
-                </p:column>
-                <p:column headerText="Cargo">
-                    <p:outputLabel value="#{e.cargo}" />
-                </p:column>
-                <p:column >
-                    <p:commandButton value="Excluir" action="#{guiEmpregado.excluir(e)}" ajax="true" update="tblempregado" />
-                    <p:commandButton value="Alterar" action="#{guiEmpregado.iniciarAlterar(e)}" ajax="false" />
-                </p:column>
-            </p:dataTable>
+            <div div="menu" style="float: left">
+                <img src="img/LIMPOL LOGO.png" style="width: 260.75px; height: 89.25px" />
+            <p:menu style="width: 250px">
+                <p:submenu label="Atendimento">
+                    <p:menuitem value="Cadastro de Cliente" action="#{guiCliente.iniciarLista()}" icon="ui-icon-person" ajax="false" />
+                    <p:menuitem value="Fazer pedido" icon="ui-icon-cart" />
+                </p:submenu>
+                <p:submenu label="Coordenação">
+                    <p:menuitem value="Cadastro de Empregado" action="#{guiEmpregado.iniciarLista()}" icon="ui-icon-suitcase" />
+                    <p:menuitem value="Cadastro de Funções" action="#{guiFuncoes.iniciarLista()}" icon="ui-icon-wrench" />
+                </p:submenu>
+                <p:submenu label="Empregados">
+                    <p:menuitem value="Tabela de Serviços" icon="ui-icon-clipboard"/>
+                </p:submenu>
+            </p:menu>
+            </div>
+            <div id="cadastro">
+                <p:commandButton value ="Incluir" action="#{guiEmpregado.iniciarNovo()}" ajax="false" />
+                <p:commandButton value="Voltar" action="MenuInicial" ajax="false" />
+                <br />
+                <br />
+                <p:dataTable value="#{guiEmpregado.listaEmpregados}" var="e" id="tblempregado" emptyMessage="Nenhum empregado encontrado com estes termos" >
+                    <p:column headerText="Matrícula" sortBy="#{e.id}" filterBy="#{e.id}" filterMatchMode="contains">
+                        <p:outputLabel value="#{e.id}" />
+                    </p:column>
+                    <p:column headerText="Nome" sortBy="#{e.nomeEmpregado}" filterBy="#{e.nomeEmpregado}" filterMatchMode="contains">
+                        <p:outputLabel value="#{e.nomeEmpregado}" />
+                    </p:column>
+                    <p:column headerText="Nível de Acesso" sortBy="#{e.cargo}" filterBy="#{e.cargo}" filterMatchMode="contains">
+                        <p:outputLabel value="#{e.cargo}" />
+                    </p:column>
+                    <p:column >
+                        <p:commandButton value="Excluir" action="#{guiEmpregado.excluir(e)}" ajax="true" update="tblempregado" />
+                        <p:commandButton value="Alterar" action="#{guiEmpregado.iniciarAlterar(e)}" ajax="false" />
+                        <p:commandButton value="Funções" action="#{guiFuncoes.iniciarLista()}" ajax="false" />
+                    </p:column>
+                </p:dataTable>
+            </div>
         </h:form>
     </h:body>
 </html>

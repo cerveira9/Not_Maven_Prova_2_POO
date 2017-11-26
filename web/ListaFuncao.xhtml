@@ -5,9 +5,9 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>Clientes</title>
+        <title>Funções</title>
     </h:head>
-    <h:body style="background-color: window">
+    <h:body>
         <h:form>
             <div div="menu" style="float: left">
                 <img src="img/LIMPOL LOGO.png" style="width: 260.75px; height: 89.25px" />
@@ -26,24 +26,31 @@
             </p:menu>
             </div>
             <div id="cadastro">
-                <p:commandButton value ="Incluir" action="#{guiCliente.iniciarNovo()}" ajax="false" />
+                <p:commandButton value ="Incluir" action="#{guiFuncoes.iniciarNovo()}" ajax="false" />
                 <p:commandButton value="Voltar" action="MenuInicial" ajax="false" />
                 <br />
                 <br />
-                <p:dataTable value="#{guiCliente.listaClientes}" var="c" id="tblcliente" emptyMessage="Nenhum cliente encontrado com estes termos" >
-                    <p:column headerText="Nome" sortBy="#{c.nomeDoCliente}" filterBy="#{c.nomeDoCliente}" filterMatchMode="contains">
-                        <p:outputLabel value="#{c.nomeDoCliente}" />
+                <p:dataTable value="#{guiFuncoes.listaFuncoes}" var="f" id="tblfuncoes" emptyMessage="Nenhuma função encontrada com estes termos" >
+                    <p:column headerText="Id" sortBy="#{f.id}" filterBy="#{f.id}" filterMatchMode="contains">
+                        <p:outputLabel value="#{f.id}" />
                     </p:column>
-                    <p:column headerText="CPF" sortBy="#{c.cpf}" filterBy="#{c.cpf}" filterMatchMode="contains">
-                        <p:outputLabel value="#{c.cpf}" />
+                    <p:column headerText="Função" sortBy="#{f.nomeDaFuncao}" filterBy="#{f.nomeDaFuncao}" filterMatchMode="contains">
+                        <p:outputLabel value="#{f.nomeDaFuncao}" />
                     </p:column>
-                    <p:column headerText="CNPJ" sortBy="#{c.cnpj}" filterBy="#{c.cnpj}" filterMatchMode="contains">
-                        <p:outputLabel value="#{c.cnpj}" />
+                    <p:column headerText="Descrição" sortBy="#{f.descricaoFuncao}" filterBy="#{f.descricaoFuncao}" filterMatchMode="contains">
+                        <p:outputLabel value="#{f.descricaoFuncao}" />
+                    </p:column>
+                    <p:column headerText="Homem/m2" sortBy="#{f.qtdHomem}" filterBy="#{f.qtdHomem}" filterMatchMode="contains">
+                        <p:outputLabel value="#{f.qtdHomem}" />
+                    </p:column>
+                    <p:column headerText="Salário Base" sortBy="#{f.salarioBase}" filterBy="#{f.salarioBase}" filterMatchMode="contains">
+                        <p:outputLabel value="#{f.salarioBase}" />
                     </p:column>
                     <p:column >
-                        <p:commandButton value="Excluir" action="#{guiCliente.excluir(c)}" ajax="true" update="tblcliente" style="width: 90px; height: 30px" />
-                        <p:commandButton value="Alterar" action="#{guiCliente.iniciarAlterar(c)}" ajax="false" style="width: 90px; height: 30px" />
+                        <p:commandButton value="Excluir" action="#{guiFuncoes.excluir(f)}" ajax="true" update="tblfuncoes" />
+                        <p:commandButton value="Alterar" action="#{guiFuncoes.iniciarAlterar(f)}" ajax="false" />
                     </p:column>
+                
                 </p:dataTable>
             </div>
         </h:form>
