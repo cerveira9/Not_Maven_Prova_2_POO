@@ -6,6 +6,7 @@
 package gui;
 
 import dao.EmpregadoDao;
+import dao.FuncoesDao;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
@@ -15,6 +16,7 @@ import java.util.List;
 import javax.ejb.EJB;
 import model.Cargos;
 import model.Empregado;
+import model.Funcoes;
 
 /**
  *
@@ -26,10 +28,14 @@ public class GuiEmpregado implements Serializable {
 
     @EJB
     EmpregadoDao daoEmpregado;
+    @EJB
+    private FuncoesDao daoFuncoes;
     private Empregado empregado;
     private List<Empregado> listaEmpregados;
     private Boolean alterando;
     private List<Cargos> listaCargos = new ArrayList<>(EnumSet.allOf(Cargos.class));
+    private Funcoes funcoes;
+    private List<Funcoes> listaFuncoes;
     private String nomeFuncao;
     
     public GuiEmpregado() {
@@ -43,6 +49,7 @@ public class GuiEmpregado implements Serializable {
     public String iniciarNovo() {
         empregado = new Empregado();
         alterando = false;
+        listaFuncoes = daoFuncoes.getList();
         return "CadastrarEmpregado";
     }
     
@@ -59,11 +66,21 @@ public class GuiEmpregado implements Serializable {
     }
     
     public String gravar() {
+        empregado.setFuncoes(getFuncaoSelecionada());
         daoEmpregado.gravar(empregado, alterando);
         listaEmpregados = daoEmpregado.getList();
         return "ListaEmpregado";
     }
 
+    private Funcoes getFuncaoSelecionada(){
+        for (Funcoes f: listaFuncoes) {
+            if (f.toString().equals(nomeFuncao)) {
+                return f;
+            }
+        }
+        return null;
+    }
+    
     public Empregado getEmpregado() {
         return empregado;
     }
@@ -102,6 +119,22 @@ public class GuiEmpregado implements Serializable {
 
     public void setListaCargos(List<Cargos> listaCargos) {
         this.listaCargos = listaCargos;
+    }
+
+    public Funcoes getFuncoes() {
+        return funcoes;
+    }
+
+    public void setFuncoes(Funcoes funcoes) {
+        this.funcoes = funcoes;
+    }
+
+    public List<Funcoes> getListaFuncoes() {
+        return listaFuncoes;
+    }
+
+    public void setListaFuncoes(List<Funcoes> listaFuncoes) {
+        this.listaFuncoes = listaFuncoes;
     }
     
     

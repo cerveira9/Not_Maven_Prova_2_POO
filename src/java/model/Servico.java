@@ -56,7 +56,7 @@ public class Servico implements Serializable {
 
     @Override
     public String toString() {
-        return "model.Servico[ id=" + id + " ]";
+        return nomeDoServico;
     }
     
         public Servico() {

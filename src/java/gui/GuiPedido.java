@@ -14,7 +14,6 @@ import java.io.Serializable;
 import java.util.List;
 import javax.ejb.EJB;
 import model.Empregado;
-import static model.Empregado_.nomeEmpregado;
 import model.Pedido;
 import model.Servico;
 
@@ -171,7 +170,6 @@ public class GuiPedido implements Serializable {
     public void setNomeServico(String nomeServico) {
         this.nomeServico = nomeServico;
     }
-    
     
     
 }

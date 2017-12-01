@@ -57,7 +57,7 @@ public class Funcoes implements Serializable {
 
     @Override
     public String toString() {
-        return "model.Funcoes[ id=" + id + " ]";
+        return nomeDaFuncao;
     }
     
     public Funcoes() {

@@ -29,8 +29,8 @@
                     <p:column headerText="Empregado" sortBy="#{p.empregado}" filterBy="#{p.empregado}" filterMatchMode="contains">
                         <p:outputLabel value="#{p.empregado}" />
                     </p:column>
-                    <p:column headerText="Valor Total" sortBy="" filterBy="" filterMatchMode="contains" >
-                        <p:outputLabel value="" />
+                    <p:column headerText="Valor Total" sortBy="#{p.valorTotal}" filterBy="#{p.valorTotal}" filterMatchMode="contains" >
+                        <p:outputLabel value="#{p.valorTotal}" />
                     </p:column>
                 </p:dataTable>
             </div>

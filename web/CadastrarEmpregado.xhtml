@@ -16,9 +16,9 @@
                     <p:outputLabel value="Nome do Empregado: " />
                     <p:inputText value="#{guiEmpregado.empregado.nomeEmpregado}" />
                     <p:outputLabel for="funcao" value="Função" />
-                    <p:selectOneMenu id="funcao" value="#{guiEmpregado.empregado.funcao}" style="width: 150px">
+                    <p:selectOneMenu id="funcao" value="#{guiEmpregado.nomeFuncao}" style="width: 150px">
                         <f:selectItem itemLabel="Selecione a função" noSelectionOption="true"/>
-                        <f:selectItems value="#{guiEmpregado.empregado.funcao}" />
+                        <f:selectItems value="#{guiEmpregado.listaFuncoes}" />
                     </p:selectOneMenu>
                     <p:outputLabel for="cargo" value="Cargo: " />
                     <p:selectOneMenu id="cargo" value="#{guiEmpregado.empregado.cargo}" style="width:150px">                

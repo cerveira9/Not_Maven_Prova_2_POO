@@ -21,12 +21,12 @@
                 <p:outputLabel value="Serviço: " />
                 <p:selectOneMenu id="servico" value="#{guiPedido.nomeServico}" style="width:150px">                
                     <f:selectItem itemLabel="Selecione o Servico: " itemValue="" noSelectionOption="true" />
-                    <f:selectItems value="#{guiPedido.nomeServico}" />
+                    <f:selectItems value="#{guiPedido.listaServicos}" />
                 </p:selectOneMenu>
                 <p:outputLabel for="empregado" value="Empregado: " />
                 <p:selectOneMenu id="empregado" value="#{guiPedido.nomeEmpregado}" style="width:150px">                
                     <f:selectItem itemLabel="Selecione o Empregado: " itemValue="" noSelectionOption="true" />
-                    <f:selectItems value="#{guiPedido.nomeEmpregado}" />
+                    <f:selectItems value="#{guiPedido.listaEmpregados}" />
                 </p:selectOneMenu>
             </p:panelGrid>
             <br />

@@ -6,14 +6,12 @@
 package model;
 
 import java.io.Serializable;
-import java.util.List;
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -114,5 +112,8 @@ public class Pedido implements Serializable {
         this.dataTermino = dataTermino;
     }
     
-    
+    public double getValorTotal() {
+        return this.servico.getValorServico() * this.metragem;
+    }
+            
 }

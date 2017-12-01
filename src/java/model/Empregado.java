@@ -13,6 +13,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 /**
  *
@@ -30,6 +31,8 @@ public class Empregado implements Serializable {
     private Cargos cargo;
     @OneToMany
     private List<Funcoes> funcao;
+    @ManyToOne
+    private Funcoes funcoes;
    
     public Long getId() {
         return id;
@@ -61,7 +64,7 @@ public class Empregado implements Serializable {
 
     @Override
     public String toString() {
-        return (this.nomeEmpregado) ;
+        return (this.nomeEmpregado + " / " + this.funcoes) ;
     }
     
     public Empregado() {
@@ -93,6 +96,14 @@ public class Empregado implements Serializable {
 
     public void setCargo(Cargos cargo) {
         this.cargo = cargo;
+    }
+
+    public Funcoes getFuncoes() {
+        return funcoes;
+    }
+
+    public void setFuncoes(Funcoes funcoes) {
+        this.funcoes = funcoes;
     }
     
    
