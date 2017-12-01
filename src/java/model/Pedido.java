@@ -12,7 +12,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
@@ -26,10 +29,14 @@ public class Pedido implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private double metragem;
-    private Date dataRealizacao;
-    private int nrpedido;    
-    @OneToMany
-    private List<Servico> servico;
+    @Temporal(TemporalType.DATE)
+    private Date dataRealizacao; 
+    @Temporal(TemporalType.DATE)
+    private Date dataTermino;
+    @ManyToOne
+    private Servico servico;
+    @ManyToOne
+    private Empregado empregado;
   
     public Long getId() {
         return id;
@@ -83,19 +90,29 @@ public class Pedido implements Serializable {
         this.dataRealizacao = dataRealizacao;
     }
 
-    public int getNrpedido() {
-        return nrpedido;
-    }
-
-    public void setNrpedido(int nrpedido) {
-        this.nrpedido = nrpedido;
-    }
-
-    public List<Servico> getServico() {
+    public Servico getServico() {
         return servico;
     }
 
-    public void setServico(List<Servico> servico) {
+    public void setServico(Servico servico) {
         this.servico = servico;
     }
+
+    public Empregado getEmpregado() {
+        return empregado;
+    }
+
+    public void setEmpregado(Empregado empregado) {
+        this.empregado = empregado;
+    }
+
+    public Date getDataTermino() {
+        return dataTermino;
+    }
+
+    public void setDataTermino(Date dataTermino) {
+        this.dataTermino = dataTermino;
+    }
+    
+    
 }

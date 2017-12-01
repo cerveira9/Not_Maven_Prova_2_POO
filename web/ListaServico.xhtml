@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:decorate xmlns="http://www.w3.org/1999/xhtml"
+             xmlns:h="http://xmlns.jcp.org/jsf/html"
+             xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+             template="template.xhtml"
+             xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Serviços</title>
+    </h:head>
+    <h:form>
+            <div id="cadastro">
+                <p:commandButton value ="Incluir" action="#{guiServico.iniciarNovo()}" ajax="false" />
+                <p:commandButton value="Voltar" action="MenuInicial" ajax="false" />
+                <br />
+                <br />
+                <p:dataTable value="#{guiServico.listaServicos}" var="s" id="tblservico" emptyMessage="Nenhum servico encontrado com estes termos" >
+                    <p:column headerText="Id" sortBy="#{s.id}" filterBy="#{s.id}" filterMatchMode="contains">
+                        <p:outputLabel value="#{s.id}" />
+                    </p:column>
+                    <p:column headerText="Serviço" sortBy="#{s.nomeDoServico}" filterBy="#{s.nomeDoServico}" filterMatchMode="contains">
+                        <p:outputLabel value="#{s.nomeDoServico}" />
+                    </p:column>
+                    <p:column headerText="Valor/m2" sortBy="#{s.valorServico}" filterBy="#{s.valorServico}" filterMatchMode="contains">
+                        <p:outputLabel value="#{s.valorServico}" />
+                    </p:column>
+                    <p:column >
+                        <p:commandButton value="Excluir" action="#{guiServico.excluir(s)}" ajax="true" update="tblservico" style="width: 90px; height: 30px" />
+                        <p:commandButton value="Alterar" action="#{guiServico.iniciarAlterar(s)}" ajax="false" style="width: 90px; height: 30px" />
+                    </p:column>
+                </p:dataTable>
+            </div>
+        </h:form>
+</ui:decorate>
+

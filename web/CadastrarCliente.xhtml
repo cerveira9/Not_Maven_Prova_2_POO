@@ -13,10 +13,10 @@
                 <p:inputText value="#{guiCliente.cliente.id}" disabled="true"/>
                 <p:outputLabel value="Nome" />
                 <p:inputText value="#{guiCliente.cliente.nomeDoCliente}" />
-                <p:outputLabel value="Endereço" />
-                <p:inputText value="#{guiCliente.cliente.cpf}" />
-                <p:outputLabel value="Telefone" />
-                <p:inputText value="#{guiCliente.cliente.cnpj}" />
+                <p:outputLabel value="CPF" />
+                <p:inputMask value="#{guiCliente.cliente.cpf}" mask="999.999.999-99" />
+                <p:outputLabel value="CNPJ" />
+                <p:inputMask value="#{guiCliente.cliente.cnpj}" mask="99.999.999/9999-99"/>
             </p:panelGrid>
             <br />
             <p:commandButton value="Gravar" action="#{guiCliente.gravar()}" ajax="false" />

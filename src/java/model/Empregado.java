@@ -61,7 +61,7 @@ public class Empregado implements Serializable {
 
     @Override
     public String toString() {
-        return "model.Empregado[ id=" + id + " ]";
+        return (this.nomeEmpregado) ;
     }
     
     public Empregado() {

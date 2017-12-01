@@ -5,6 +5,7 @@
  */
 package dao;
 
+import java.util.Date;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -25,6 +26,18 @@ public class EmpregadoDao {
     public List<Empregado> getList() {
         Query q = em.createQuery("select e from Empregado e");
         return q.getResultList();
+    }
+    
+    public boolean getEmpregadoOcupado(Empregado e, Date d) {
+        Query q = em.createQuery("select p from Pedido p where p.dataRealizacao = :dt and p.empregado.id = :emp");
+        q.setParameter("dt", d);
+        q.setParameter("emp", e.getId());
+        List l = q.getResultList();
+        if (l.isEmpty()) {
+            return false;
+        } else {
+            return true;
+        }
     }
 
     public void gravar(Empregado object, boolean edit) {

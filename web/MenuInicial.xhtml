@@ -1,28 +1,13 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
+<ui:decorate xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      template="template.xhtml">
     <h:head>
         <title>Limpol Serviços de Limpeza</title>
     </h:head>
-    <h:body style="background-color: window">
-        <h:form>
-            <img src="img/LIMPOL LOGO.png" style="width: 260.75px; height: 89.25px" />
-            <p:menu style="width: 250px">
-                <p:submenu label="Atendimento">
-                    <p:menuitem value="Cadastro de Cliente" action="#{guiCliente.iniciarLista()}" icon="ui-icon-person" ajax="false" />
-                    <p:menuitem value="Fazer pedido" icon="ui-icon-cart" />
-                </p:submenu>
-                <p:submenu label="Coordenação">
-                    <p:menuitem value="Cadastro de Empregado" action="#{guiEmpregado.iniciarLista()}" icon="ui-icon-suitcase" />
-                    <p:menuitem value="Cadastro de Funções" action="#{guiFuncoes.iniciarLista()}" icon="ui-icon-wrench" />
-                </p:submenu>
-                <p:submenu label="Empregados">
-                    <p:menuitem value="Tabela de Serviços" icon="ui-icon-clipboard"/>
-                </p:submenu>
-            </p:menu>
-        </h:form>
-    </h:body>
-</html>
+        <h:form></h:form>    
+</ui:decorate>
 

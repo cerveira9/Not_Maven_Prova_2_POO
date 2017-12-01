@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Abertura de Pedido</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <p:panelGrid columns="2" >
+                <p:outputLabel value="Número do Pedido: " />
+                <p:inputText value="#{guiPedido.pedido.id}" disabled="true"/>
+                <p:outputLabel value="Metragem: " />
+                <p:inputText value="#{guiPedido.pedido.metragem}" />
+                <p:outputLabel value="Data da Realização: " />
+                <p:calendar id="data" value="#{guiPedido.pedido.dataRealizacao}" pattern="dd/MM/yyyy" />
+                <p:outputLabel value="Data do Término: " />
+                <p:calendar id="dataTermino" value="#{guiPedido.pedido.dataTermino}" pattern="dd/MM/yyyy" />
+                <p:outputLabel value="Serviço: " />
+                <p:selectOneMenu id="servico" value="#{guiPedido.nomeServico}" style="width:150px">                
+                    <f:selectItem itemLabel="Selecione o Servico: " itemValue="" noSelectionOption="true" />
+                    <f:selectItems value="#{guiPedido.nomeServico}" />
+                </p:selectOneMenu>
+                <p:outputLabel for="empregado" value="Empregado: " />
+                <p:selectOneMenu id="empregado" value="#{guiPedido.nomeEmpregado}" style="width:150px">                
+                    <f:selectItem itemLabel="Selecione o Empregado: " itemValue="" noSelectionOption="true" />
+                    <f:selectItems value="#{guiPedido.nomeEmpregado}" />
+                </p:selectOneMenu>
+            </p:panelGrid>
+            <br />
+            <p:commandButton value="Gravar" action="#{guiPedido.gravar()}" ajax="false" />
+            <p:commandButton value="Voltar" action="#{guiPedido.iniciarLista()}" ajax="false" />
+        </h:form>
+    </h:body>
+</html>
+
