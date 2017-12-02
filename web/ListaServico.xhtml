@@ -14,7 +14,10 @@
                 <p:commandButton value="Voltar" action="MenuInicial" ajax="false" />
                 <br />
                 <br />
-                <p:dataTable value="#{guiServico.listaServicos}" var="s" id="tblservico" emptyMessage="Nenhum servico encontrado com estes termos" >
+                <p:dataTable value="#{guiServico.listaServicos}" var="s" id="tblservico" emptyMessage="Nenhum servico encontrado com estes termos" 
+                             paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
+                             paginator="true" rows="10" style="margin-bottom:20px">
+                    
                     <p:column headerText="Id" sortBy="#{s.id}" filterBy="#{s.id}" filterMatchMode="contains">
                         <p:outputLabel value="#{s.id}" />
                     </p:column>
@@ -24,11 +27,14 @@
                     <p:column headerText="Valor/m2" sortBy="#{s.valorServico}" filterBy="#{s.valorServico}" filterMatchMode="contains">
                         <p:outputLabel value="#{s.valorServico}" />
                     </p:column>
-                    <p:column >
+                    <p:column exportable="false">
                         <p:commandButton value="Excluir" action="#{guiServico.excluir(s)}" ajax="true" update="tblservico" style="width: 90px; height: 30px" />
                         <p:commandButton value="Alterar" action="#{guiServico.iniciarAlterar(s)}" ajax="false" style="width: 90px; height: 30px" />
                     </p:column>
                 </p:dataTable>
+                <p:commandButton value="Gerar Relatório" ajax="false">
+                    <p:dataExporter type="csv" target="tblservico" fileName="Servicos" />
+                </p:commandButton>
             </div>
         </h:form>
 </ui:decorate>

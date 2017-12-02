@@ -97,6 +97,7 @@ public class GuiPedido implements Serializable {
         daoPedido.gravar(pedido, alterando);
         listaPedidos = daoPedido.getList();
         return null;
+        
     }
 
     public Pedido getPedido() {

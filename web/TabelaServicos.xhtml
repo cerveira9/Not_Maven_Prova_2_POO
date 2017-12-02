@@ -10,7 +10,9 @@
     </h:head>
     <h:form>
             <div id="servicos">
-                <p:dataTable value="#{guiPedido.listaPedidos}" var="p" id="tblpedidos" emptyMessage="Nenhum pedido encontrado com estes termos" >
+                <p:dataTable value="#{guiPedido.listaPedidos}" var="p" id="tblpedidos" emptyMessage="Nenhum pedido encontrado com estes termos" 
+                             paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
+                             paginator="true" rows="10" style="margin-bottom:20px">
                     <p:column headerText="Número do Pedido" sortBy="#{p.id}" filterBy="#{p.id}" filterMatchMode="contains">
                         <p:outputLabel value="#{p.id}" />
                     </p:column>
@@ -33,6 +35,9 @@
                         <p:outputLabel value="#{p.valorTotal}" />
                     </p:column>
                 </p:dataTable>
+                <p:commandButton value="Gerar Relatório" ajax="false">
+                    <p:dataExporter type="csv" target="tblpedidos" fileName="Pedidos" />
+                </p:commandButton>
             </div>
         </h:form>
 </ui:decorate>

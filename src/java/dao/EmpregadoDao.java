@@ -12,6 +12,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import model.Empregado;
+import model.Pedido;
 
 /**
  *
@@ -51,4 +52,5 @@ public class EmpregadoDao {
     public void excluir(Empregado object) {
         em.remove(em.merge(object));
     }
+
 }

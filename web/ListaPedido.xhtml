@@ -14,7 +14,9 @@
                 <p:commandButton value="Voltar" action="MenuInicial" ajax="false" />
                 <br />
                 <br />
-                <p:dataTable value="#{guiPedido.listaPedidos}" var="p" id="tblpedidos" emptyMessage="Nenhum pedido encontrado com estes termos" >
+                <p:dataTable value="#{guiPedido.listaPedidos}" var="p" id="tblpedidos" emptyMessage="Nenhum pedido encontrado com estes termos" 
+                             paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
+                             paginator="true" rows="10" style="margin-bottom:20px">
                     <p:column headerText="Número do Pedido" sortBy="#{p.id}" filterBy="#{p.id}" filterMatchMode="contains">
                         <p:outputLabel value="#{p.id}" />
                     </p:column>
