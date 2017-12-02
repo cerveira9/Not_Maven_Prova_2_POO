@@ -55,7 +55,7 @@ public class GuiPedido implements Serializable {
     public String iniciarNovo() {
         pedido = new Pedido();
         alterando = false;
-        listaEmpregados = daoEmpregado.getList();
+        listaEmpregados = daoEmpregado.getListCargoEmpregado();
         listaServicos = daoServico.getList();
         return "CadastrarPedido";
     }

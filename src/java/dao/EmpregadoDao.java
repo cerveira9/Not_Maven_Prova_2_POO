@@ -29,6 +29,11 @@ public class EmpregadoDao {
         return q.getResultList();
     }
     
+    public List<Empregado> getListCargoEmpregado(){
+        Query q = em.createQuery("select e from Empregado e where e.cargo LIKE 'Empregado'");
+        return q.getResultList();
+    }
+    
     public boolean getEmpregadoOcupado(Empregado e, Date d) {
         Query q = em.createQuery("select p from Pedido p where p.dataRealizacao = :dt and p.empregado.id = :emp");
         q.setParameter("dt", d);
