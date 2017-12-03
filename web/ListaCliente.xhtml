@@ -27,6 +27,12 @@
                     <p:column headerText="CNPJ" sortBy="#{c.cnpj}" filterBy="#{c.cnpj}" filterMatchMode="contains">
                         <p:outputLabel value="#{c.cnpj}" />
                     </p:column>
+                    <p:column headerText="Endereço" sortBy="#{c.endereco}" filterBy="#{c.endereco}" filterMatchMode="contains">
+                        <p:outputLabel value="#{c.endereco}" />
+                    </p:column>
+                    <p:column headerText="Telefone" sortBy="#{c.telefone}" filterBy="#{c.telefone}" filterMatchMode="contains">
+                        <p:outputLabel value="#{c.telefone}" />
+                    </p:column>
                     <p:column exportable="false">
                         <p:commandButton value="Excluir" action="#{guiCliente.excluir(c)}" ajax="true" update="tblcliente" style="width: 90px; height: 30px" />
                         <p:commandButton value="Alterar" action="#{guiCliente.iniciarAlterar(c)}" ajax="false" style="width: 90px; height: 30px" />

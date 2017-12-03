@@ -5,6 +5,7 @@
  */
 package gui;
 
+import dao.ClienteDao;
 import dao.EmpregadoDao;
 import dao.PedidoDao;
 import dao.ServicoDao;
@@ -13,6 +14,7 @@ import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.util.List;
 import javax.ejb.EJB;
+import model.Cliente;
 import model.Empregado;
 import model.Pedido;
 import model.Servico;
@@ -31,16 +33,20 @@ public class GuiPedido implements Serializable {
     private EmpregadoDao daoEmpregado;
     @EJB
     private ServicoDao daoServico;
-    
+    @EJB
+    private ClienteDao daoCliente;
     private Pedido pedido;
     private List<Pedido> listaPedidos;
     private Empregado empregado;
     private List<Empregado> listaEmpregados;
     private Servico servico;
     private List<Servico> listaServicos;
+    private Cliente cliente;
+    private List<Cliente> listaClientes;
     private Boolean alterando;
     private String nomeEmpregado;
     private String nomeServico;
+    private String nomeCliente;
     
     public GuiPedido() {
     }
@@ -57,6 +63,7 @@ public class GuiPedido implements Serializable {
         alterando = false;
         listaEmpregados = daoEmpregado.getListCargoEmpregado();
         listaServicos = daoServico.getList();
+        listaClientes = daoCliente.getList();
         return "CadastrarPedido";
     }
     
@@ -78,6 +85,15 @@ public class GuiPedido implements Serializable {
         return null;
     }
     
+    private Cliente getClienteSelecionado(){
+        for (Cliente c: listaClientes) {
+            if (c.toString().equals(nomeCliente)){
+                return c;
+            }
+        }
+        return null;
+    }
+    
     public String iniciarAlterar(Pedido pedido) {
         this.pedido = pedido;
         alterando = true;
@@ -94,6 +110,7 @@ public class GuiPedido implements Serializable {
     public String gravar() {
         pedido.setEmpregado(getEmpregadoSelecionado());
         pedido.setServico(getServicoSelecionado());
+        pedido.setCliente(getClienteSelecionado());
         daoPedido.gravar(pedido, alterando);
         listaPedidos = daoPedido.getList();
         return null;
@@ -112,7 +129,7 @@ public class GuiPedido implements Serializable {
         return listaPedidos;
     }
 
-    public void setListaClientes(List<Pedido> listaPedidos) {
+    public void setListaPedidos(List<Pedido> listaPedidos) {
         this.listaPedidos = listaPedidos;
     }
 
@@ -170,6 +187,30 @@ public class GuiPedido implements Serializable {
 
     public void setNomeServico(String nomeServico) {
         this.nomeServico = nomeServico;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
+    public List<Cliente> getListaClientes() {
+        return listaClientes;
+    }
+
+    public void setListaClientes(List<Cliente> listaClientes) {
+        this.listaClientes = listaClientes;
+    }
+
+    public String getNomeCliente() {
+        return nomeCliente;
+    }
+
+    public void setNomeCliente(String nomeCliente) {
+        this.nomeCliente = nomeCliente;
     }
     
     

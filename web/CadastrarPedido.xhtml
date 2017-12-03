@@ -18,6 +18,11 @@
                 <p:calendar id="data" value="#{guiPedido.pedido.dataRealizacao}" pattern="dd/MM/yyyy" />
                 <p:outputLabel value="Data do Término: " />
                 <p:calendar id="dataTermino" value="#{guiPedido.pedido.dataTermino}" pattern="dd/MM/yyyy" />
+                <p:outputLabel value="Cliente: " />
+                <p:selectOneMenu id="cliente" value="#{guiPedido.nomeCliente}" style="width:150px">                
+                    <f:selectItem itemLabel="Selecione o Cliente: " itemValue="" noSelectionOption="true" />
+                    <f:selectItems value="#{guiPedido.listaClientes}" />
+                </p:selectOneMenu>
                 <p:outputLabel value="Serviço: " />
                 <p:selectOneMenu id="servico" value="#{guiPedido.nomeServico}" style="width:150px">                
                     <f:selectItem itemLabel="Selecione o Servico: " itemValue="" noSelectionOption="true" />

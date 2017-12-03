@@ -35,6 +35,8 @@ public class Pedido implements Serializable {
     private Servico servico;
     @ManyToOne
     private Empregado empregado;
+    @ManyToOne
+    private Cliente cliente;
   
     public Long getId() {
         return id;
@@ -104,6 +106,14 @@ public class Pedido implements Serializable {
         this.empregado = empregado;
     }
 
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+    
     public Date getDataTermino() {
         return dataTermino;
     }

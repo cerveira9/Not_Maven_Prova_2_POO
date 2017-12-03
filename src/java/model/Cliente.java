@@ -29,6 +29,8 @@ public class Cliente implements Serializable {
     private String nomeDoCliente;
     @OneToMany
     private List<Pedido> pedido;
+    private String endereco;
+    private String telefone;
 
     public Long getId() {
         return id;
@@ -60,7 +62,7 @@ public class Cliente implements Serializable {
 
     @Override
     public String toString() {
-        return "model.Cliente[ id=" + id + " ]";
+        return this.nomeDoCliente;
     }
     
     public Cliente() {
@@ -88,6 +90,22 @@ public class Cliente implements Serializable {
 
     public void setNomeDoCliente(String nomeDoCliente) {
         this.nomeDoCliente = nomeDoCliente;
+    }
+
+    public String getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
+    }
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
     }
     
     
