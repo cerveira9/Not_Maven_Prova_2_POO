@@ -26,7 +26,19 @@ public class LoginDao {
         Query q = em.createQuery("select l from Login l");
         return q.getResultList();
     }
-
+    
+    public boolean entrar(String login, String senha){
+        Query q = em.createQuery("select l from Login l where l.login = :login and l.senha = :senha");
+        q.setParameter("login", login);
+        q.setParameter("senha", senha);
+        List l = q.getResultList();
+        if (l.isEmpty()){
+            return false;
+        } else {
+            return true;
+        }
+    }
+    
     public void gravar(Login object, boolean edit) {
         if (edit == false) {
             em.persist(object);

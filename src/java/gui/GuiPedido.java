@@ -14,10 +14,13 @@ import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.util.List;
 import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import model.Cliente;
 import model.Empregado;
 import model.Pedido;
 import model.Servico;
+import org.primefaces.context.RequestContext;
 
 /**
  *
@@ -47,17 +50,16 @@ public class GuiPedido implements Serializable {
     private String nomeEmpregado;
     private String nomeServico;
     private String nomeCliente;
-    
+    private String message = "Empregado indisponível na data escolhida!";
+
     public GuiPedido() {
     }
-    
-    
-    
+
     public String iniciarLista() {
         listaPedidos = daoPedido.getList();
         return "ListaPedido";
     }
-    
+
     public String iniciarNovo() {
         pedido = new Pedido();
         alterando = false;
@@ -66,47 +68,54 @@ public class GuiPedido implements Serializable {
         listaClientes = daoCliente.getList();
         return "CadastrarPedido";
     }
-    
-    private Empregado getEmpregadoSelecionado(){
-        for (Empregado e: listaEmpregados) {
+
+    private Empregado getEmpregadoSelecionado() {
+        for (Empregado e : listaEmpregados) {
             if (e.toString().equals(nomeEmpregado)) {
                 return e;
             }
         }
         return null;
     }
-    
-    private Servico getServicoSelecionado(){
-        for (Servico s: listaServicos) {
+
+    private Servico getServicoSelecionado() {
+        for (Servico s : listaServicos) {
             if (s.toString().equals(nomeServico)) {
                 return s;
             }
         }
         return null;
     }
-    
-    private Cliente getClienteSelecionado(){
-        for (Cliente c: listaClientes) {
-            if (c.toString().equals(nomeCliente)){
+
+    private Cliente getClienteSelecionado() {
+        for (Cliente c : listaClientes) {
+            if (c.toString().equals(nomeCliente)) {
                 return c;
             }
         }
         return null;
     }
-    
+
     public String iniciarAlterar(Pedido pedido) {
         this.pedido = pedido;
         alterando = true;
         return "CadastrarPedido";
     }
-    
+
     public String excluir(Pedido pedido) {
         daoPedido.excluir(pedido);
         listaPedidos = daoPedido.getList();
-        
+
         return null;
     }
-    
+
+    public void showMessage() {
+        FacesContext context = FacesContext.getCurrentInstance();
+
+        context.addMessage(null, new FacesMessage("Erro!", message));
+
+    }
+
     public String gravar() {
         pedido.setEmpregado(getEmpregadoSelecionado());
         pedido.setServico(getServicoSelecionado());
@@ -114,7 +123,6 @@ public class GuiPedido implements Serializable {
         daoPedido.gravar(pedido, alterando);
         listaPedidos = daoPedido.getList();
         return null;
-        
     }
 
     public Pedido getPedido() {
@@ -212,6 +220,13 @@ public class GuiPedido implements Serializable {
     public void setNomeCliente(String nomeCliente) {
         this.nomeCliente = nomeCliente;
     }
-    
-    
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
 }

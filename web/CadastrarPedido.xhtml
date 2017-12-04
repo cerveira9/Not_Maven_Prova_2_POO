@@ -9,6 +9,7 @@
     </h:head>
     <h:body>
         <h:form>
+            <p:growl id="growl" showDetail="true" sticky="true" />
             <p:panelGrid columns="2" >
                 <p:outputLabel value="Número do Pedido: " />
                 <p:inputText value="#{guiPedido.pedido.id}" disabled="true"/>
@@ -35,7 +36,7 @@
                 </p:selectOneMenu>
             </p:panelGrid>
             <br />
-            <p:commandButton value="Gravar" action="#{guiPedido.gravar()}" ajax="false" />
+            <p:commandButton value="Gravar" actionListener="#{guiPedido.gravar()}" update="growl" ajax="false" />
             <p:commandButton value="Voltar" action="#{guiPedido.iniciarLista()}" ajax="false" />
         </h:form>
     </h:body>

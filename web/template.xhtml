@@ -20,9 +20,14 @@
                     <p:menuitem value="Cadastro de Empregado" action="#{guiEmpregado.iniciarLista()}" icon="ui-icon-suitcase" />
                     <p:menuitem value="Cadastro de Funções" action="#{guiFuncoes.iniciarLista()}" icon="ui-icon-wrench" />
                     <p:menuitem value="Cadastro de Serviços" action="#{guiServico.iniciarLista()}" icon="ui-icon-wrench" />
+                    <p:menuitem value="Inscrever" action="#{guiLogin.iniciarNovo()}" icon="ui-icon-pencil" />
                 </p:submenu>
                 <p:submenu label="Empregados">
                     <p:menuitem value="Tabela de Serviços" action="TabelaServicos" icon="ui-icon-clipboard"/>
+                </p:submenu>
+                <p:submenu label="Outros">
+                    <p:menuitem value="Home" action="MenuInicial" icon="ui-icon-home"/>
+                    <p:menuitem value="Sair" action="index" icon="ui-icon-arrowreturnthick-1-n"/>
                 </p:submenu>
             </p:menu>
              </div>

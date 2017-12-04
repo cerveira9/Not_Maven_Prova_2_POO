@@ -31,7 +31,11 @@ public class GuiLogin implements Serializable {
     }
     
     public String entrar(){
-        return "MenuInicial";
+        if (daoLogin.entrar(login.getLogin(), login.getSenha())){
+            return "MenuInicial";
+        } else {
+        return "index";
+        }
     }
     
     
@@ -61,7 +65,7 @@ public class GuiLogin implements Serializable {
     public String gravar() {
         daoLogin.gravar(login, alterando);
         listaLogin = daoLogin.getList();
-        return null;
+        return "MenuInicial";
     }
 
     public Login getLogin() {

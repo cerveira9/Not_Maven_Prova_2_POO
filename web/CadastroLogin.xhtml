@@ -16,12 +16,12 @@
                     <p:outputLabel value="Login: " />
                     <p:inputText value="#{guiLogin.login.login}" />
                     <p:outputLabel value="Senha: " />
-                    <p:inputText value="#{guiLogin.login.senha}" />
+                    <p:password value="#{guiLogin.login.senha}" />
                 </p:panelGrid>
             </p:panel>
             <br />
             <p:commandButton value="Inscrever" action="#{guiLogin.gravar()}" ajax="false" />
-            <p:commandButton value="Voltar" action="index" ajax="false" />
+            <p:commandButton value="Voltar" action="MenuInicial" ajax="false" />
         </h:form>
     </h:body>
 </html>
